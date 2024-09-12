@@ -1,7 +1,12 @@
-import "./App.css";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  return <h1>Hello</h1>;
+  return (
+    <>
+      <h1>Racing Car Game</h1>
+      <Outlet />
+    </>
+  );
 }
 
 export default App;
