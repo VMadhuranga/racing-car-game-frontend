@@ -1,13 +1,11 @@
 import axios from "axios";
+import setAuthHeader from "../utils/set-auth-header";
 
 export default async function getUser(baseUrl, userId) {
-  try {
-    const response = await axios.get(`${baseUrl}/users/${userId}`, {
-      withCredentials: true,
-    });
+  const response = await axios.get(`${baseUrl}/users/${userId}`, {
+    ...setAuthHeader(),
+    withCredentials: true,
+  });
 
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
+  return response.data;
 }
