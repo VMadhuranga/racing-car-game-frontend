@@ -1,9 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 function App() {
+  const location = useLocation();
+
   return (
     <>
-      <h1>Racing Car Game</h1>
+      {!location.pathname.includes("play") && <h1>Racing Car Game</h1>}
       <Outlet />
     </>
   );
