@@ -16,15 +16,15 @@ export default function EditProfile() {
 
   useEffect(() => {
     if (actionData?.isUsernameUpdated) {
-      setIsEditUsername(false);
+      setIsEditUsername(() => false);
     }
-  }, [actionData?.isUsernameUpdated]);
+  }, [actionData]);
 
   useEffect(() => {
     if (actionData?.isPasswordUpdated) {
-      setIsEditPassword(false);
+      setIsEditPassword(() => false);
     }
-  }, [actionData?.isPasswordUpdated]);
+  }, [actionData]);
 
   return (
     <section className="edit-profile">
