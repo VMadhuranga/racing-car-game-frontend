@@ -17,7 +17,7 @@ export default function SignUpForm() {
         </div>
         <div>
           <label htmlFor="password">Password:</label>
-          <input type="text" id="password" name="password" required />
+          <input type="password" id="password" name="password" required />
           {errors &&
             errors.password?.map((error, index) => (
               <span key={index}>{"* " + error}</span>
@@ -26,7 +26,7 @@ export default function SignUpForm() {
         <div>
           <label htmlFor="confirm-password">Confirm password:</label>
           <input
-            type="text"
+            type="password"
             id="confirm-password"
             name="confirm-password"
             required

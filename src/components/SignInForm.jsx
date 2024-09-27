@@ -17,7 +17,7 @@ export default function SignInForm() {
         </div>
         <div>
           <label htmlFor="password">Password:</label>
-          <input type="text" id="password" name="password" required />
+          <input type="password" id="password" name="password" required />
           {errors &&
             errors.password?.map((error, index) => (
               <span key={index}>{"* " + error}</span>

@@ -83,7 +83,7 @@ export default function EditProfile() {
               <div>
                 <label htmlFor="old-password">Old password:</label>
                 <input
-                  type="text"
+                  type="password"
                   id="old-password"
                   name="old-password"
                   required
@@ -96,7 +96,7 @@ export default function EditProfile() {
               <div>
                 <label htmlFor="new-password">New password:</label>
                 <input
-                  type="text"
+                  type="password"
                   id="new-password"
                   name="new-password"
                   required
@@ -111,7 +111,7 @@ export default function EditProfile() {
                   Confirm new password:
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   id="confirm-new-password"
                   name="confirm-new-password"
                   required
