@@ -26,6 +26,7 @@ import signOut from "./loaders/sign-out.js";
 import updateBestTime from "./actions/update-best-time.js";
 import getLeaderBoard from "./loaders/get-leader-board.js";
 import "./main.css";
+import LoadingIndicator from "./components/LoadingIndicator.jsx";
 
 const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
@@ -210,6 +211,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} fallbackElement={<LoadingIndicator />} />
   </StrictMode>,
 );
