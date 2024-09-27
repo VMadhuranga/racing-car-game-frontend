@@ -33,7 +33,7 @@ export default function EditProfile() {
         <li>
           {!isEditUsername && (
             <>
-              User name: {user.username}
+              <span>User name: {user.username}</span>
               <button onClick={() => setIsEditUsername(!isEditUsername)}>
                 edit
               </button>
