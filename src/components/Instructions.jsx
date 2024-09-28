@@ -4,7 +4,7 @@ export default function Instructions() {
   const { userId } = useParams();
 
   return (
-    <section className="instructions">
+    <section>
       <h2>Instructions</h2>
       <ul>
         <li>

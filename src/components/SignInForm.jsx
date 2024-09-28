@@ -4,7 +4,7 @@ export default function SignInForm() {
   const errors = useActionData();
 
   return (
-    <section className="sign-in-form">
+    <section>
       <h2>Sign in</h2>
       <Form method="POST">
         <div>

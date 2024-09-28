@@ -4,7 +4,7 @@ export default function SignUpForm() {
   const errors = useActionData();
 
   return (
-    <section className="sign-up-form">
+    <section>
       <h2>Sign up</h2>
       <Form method="POST">
         <div>
