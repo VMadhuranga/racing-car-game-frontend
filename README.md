@@ -54,3 +54,4 @@ You need to have the following installed on your computer to run this program lo
 
 - [OpenGameArt.Org](https://opengameart.org/) free online repository of digital assets for video game development
 - [Racing Car](https://opengameart.org/content/racing-car-0) by [awesomeduck](https://opengameart.org/users/awesomeduck) licensed [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
+- [Loaders](https://cssloaders.github.io/): collection of different types of CSS loaders, spinners
