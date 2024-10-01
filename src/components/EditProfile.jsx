@@ -3,7 +3,7 @@ import {
   Form,
   Link,
   useActionData,
-  useLoaderData,
+  useOutletContext,
   useParams,
 } from "react-router-dom";
 
@@ -11,7 +11,7 @@ export default function EditProfile() {
   const [isEditUsername, setIsEditUsername] = useState(false);
   const [isEditPassword, setIsEditPassword] = useState(false);
   const { userId } = useParams();
-  const user = useLoaderData();
+  const user = useOutletContext();
   const actionData = useActionData();
 
   useEffect(() => {
