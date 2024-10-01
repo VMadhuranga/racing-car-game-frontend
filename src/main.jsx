@@ -158,12 +158,6 @@ const router = createBrowserRouter([
           {
             path: "profile/edit",
             element: <EditProfile />,
-            loader: async ({ params }) => {
-              await refresh(baseUrl);
-              const { userId } = params;
-              const user = await getUser(baseUrl, userId);
-              return user;
-            },
             action: async ({ params, request }) => {
               await refresh(baseUrl);
               const { userId } = params;
