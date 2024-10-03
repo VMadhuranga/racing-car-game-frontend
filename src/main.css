@@ -115,6 +115,10 @@ kbd {
   align-items: center;
 }
 
+.instructions p {
+  font-weight: bold;
+}
+
 .edit-profile li,
 .leader-board li {
   display: flex;
