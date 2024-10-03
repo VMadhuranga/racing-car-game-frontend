@@ -67,6 +67,8 @@ export default function GamePlay() {
     let isRightArrowKeyPressed = false;
     let isLeftArrowKeyPressed = false;
     let isShiftKeyPressed = false;
+    let isCanvasLeftSideTouched = false;
+    let isCanvasRightSideTouched = false;
 
     const startTime = performance.now();
     let deltaTime = startTime;
@@ -129,16 +131,21 @@ export default function GamePlay() {
         carSpeed += 0.001;
       }
 
-      if (!isLeftArrowKeyPressed && !isRightArrowKeyPressed) {
+      if (
+        !isLeftArrowKeyPressed &&
+        !isRightArrowKeyPressed &&
+        !isCanvasLeftSideTouched &&
+        !isCanvasRightSideTouched
+      ) {
         playerCarImage = setImage(racingCarImage);
       }
 
-      if (isLeftArrowKeyPressed) {
+      if (isLeftArrowKeyPressed || isCanvasLeftSideTouched) {
         playerCarXPosition = Math.max(playerCarXPosition - carTurningSpeed, 0);
         playerCarImage = setImage(racingCarLeftImage);
       }
 
-      if (isRightArrowKeyPressed) {
+      if (isRightArrowKeyPressed || isCanvasRightSideTouched) {
         playerCarXPosition = Math.min(
           playerCarXPosition + carTurningSpeed,
           canvas.width - playerCarImage.width,
@@ -146,7 +153,11 @@ export default function GamePlay() {
         playerCarImage = setImage(racingCarRightImage);
       }
 
-      if (isShiftKeyPressed) {
+      if (
+        isShiftKeyPressed ||
+        isCanvasLeftSideTouched ||
+        isCanvasRightSideTouched
+      ) {
         carTurningSpeed =
           Math.ceil(carSpeed / 2) === 0 ? 1 : Math.ceil(carSpeed / 2);
       } else {
@@ -184,8 +195,33 @@ export default function GamePlay() {
       }
     }
 
+    function handleTouchStartEvents(e) {
+      e.preventDefault();
+      const middle = Math.floor(document.body.clientWidth / 2);
+      const touchPoint = e.targetTouches[0].clientX;
+
+      if (touchPoint < middle) {
+        isCanvasLeftSideTouched = true;
+        isCanvasRightSideTouched = false;
+      }
+
+      if (touchPoint >= middle) {
+        isCanvasLeftSideTouched = false;
+        isCanvasRightSideTouched = true;
+      }
+    }
+
+    function handleTouchEndEvents(e) {
+      e.preventDefault();
+      isCanvasLeftSideTouched = false;
+      isCanvasRightSideTouched = false;
+    }
+
     document.addEventListener("keydown", handleKeyDownEvents, false);
     document.addEventListener("keyup", handleKeyUpEvents, false);
+
+    canvas.addEventListener("touchstart", handleTouchStartEvents, false);
+    canvas.addEventListener("touchend", handleTouchEndEvents, false);
 
     if (isCounting) {
       drawTrackLimit(ctx, 0, trackLimitWidth);
@@ -199,6 +235,10 @@ export default function GamePlay() {
     return () => {
       document.removeEventListener("keydown", handleKeyDownEvents, false);
       document.removeEventListener("keyup", handleKeyUpEvents, false);
+
+      canvas.removeEventListener("touchstart", handleTouchStartEvents, false);
+      canvas.removeEventListener("touchend", handleTouchEndEvents, false);
+
       clearInterval(intervalId);
     };
   }, [isCounting]);
